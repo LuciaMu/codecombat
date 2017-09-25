@@ -4,10 +4,9 @@ node_js:
   - 5.1.1
 env:
   - CXX=g++-4.8
-services:
-  - mongodb
 addons:
   firefox: "55.0"
+  chrome: "stable"
   apt:
     sources:
       - mongodb-upstart
@@ -15,7 +14,6 @@ addons:
     packages:
       - mongodb-org-server
       - g++-4.8
-      - google-chrome-stable
 cache:
   directories:
     - node_modules
@@ -46,4 +44,4 @@ notifications:
     on_failure: always
     on_start: never
     on_pull_requests: false
-dist: trusty
+dist: precise
