@@ -37,7 +37,6 @@ module.exports = class User extends CocoModel
 
   getPhotoURL: (size=80) ->
     return '' if application.testing
-    console.log 'get photo url'
     return "/db/user/#{@id}/avatar?s=#{size}"
 
   getRequestVerificationEmailURL: ->

@@ -9,8 +9,6 @@ require 'tests'
 TEST_REQUIRE_PREFIX = 'test/app/'
 TEST_URL_PREFIX = '/test/'
 
-
-
 customMatchers = {
   toDeepEqual: (util, customEqualityTesters) ->
     return {
@@ -74,34 +72,23 @@ module.exports = TestView = class TestView extends RootView
       @specFiles = (f for f in @specFiles when _.string.startsWith f, prefix)
 
   @runTests: (specFiles, demosOn=false, view) ->
-    oldIt = window.it
-    window.it = (testName) ->
-      console.log "it: starting", testName
-      oldIt.apply(window, arguments)
     jasmine.getEnv().addReporter({
       suiteStack: []
       
-      specStarted: (result) ->
-        console.log "Test started: ", result.fullName
-      
       specDone: (result) ->
-        console.log "Test done: ", result.fullName
         if result.status is 'failed'
           report = {
             suiteDescriptions: _.clone(@suiteStack)
             failMessages: (fe.message for fe in result.failedExpectations)
             testDescription: result.description
           }
-          console.log "Test failed: ", result.fullName, JSON.stringify(report, null, '  ')
           view?.failureReports.push(report)
           view?.renderSelectors('#failure-reports')
         
       suiteStarted: (result) ->
-        console.log "Suite started: ", result.fullName
         @suiteStack.push(result.description)
 
       suiteDone: (result) ->
-        console.log "Suite done: ", result.fullName
         @suiteStack.pop()
         
     })
