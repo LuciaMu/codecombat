@@ -5,7 +5,7 @@ node_js:
 env:
   - CXX=g++-4.8
 addons:
-  firef-x: "31.0"
+  firefox: "31.0"
   apt:
     sources:
       - mongodb-upstart
