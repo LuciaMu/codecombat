@@ -194,6 +194,9 @@ window.serializeForIOS = serializeForIOS = (obj, depth=3) ->
   clone
 
 window.onbeforeunload = (e) ->
+  console.log('NAVIGATING AWAY', e)
+  console.log document.location.href
+  
   leavingMessage = _.result(window.currentView, 'onLeaveMessage')
   if leavingMessage
     return leavingMessage

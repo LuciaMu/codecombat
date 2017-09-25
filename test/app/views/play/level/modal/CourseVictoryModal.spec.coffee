@@ -119,7 +119,7 @@ describe 'CourseVictoryModal', ->
       _.defer done
 
     describe 'its CourseVictoryModal', ->
-      xit 'has a publish button which sets session.published to true', (done) ->
+      it 'has a publish button which sets session.published to true', (done) ->
         spyOn(application.router, 'navigate')
         button = modal.$el.find('#publish-btn')
         expect(button.length).toBe(1)
@@ -128,4 +128,4 @@ describe 'CourseVictoryModal', ->
           done()
         modal.session.fakeRequests[0]?.respondWith({ status: 200, responseText: '{}' })
 
-    xit '(demo)', -> jasmine.demoModal(modal)
+    it '(demo)', -> jasmine.demoModal(modal)

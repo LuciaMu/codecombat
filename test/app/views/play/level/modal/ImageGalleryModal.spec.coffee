@@ -14,7 +14,7 @@ describe 'ImageGalleryModal', ->
     modal.render()
     _.defer done
 
-  xit '(demo)', ->
+  it '(demo)', ->
     jasmine.demoModal(modal)
 
   it 'shows a list of images', ->
