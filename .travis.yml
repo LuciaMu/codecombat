@@ -4,9 +4,10 @@ node_js:
   - 5.1.1
 env:
   - CXX=g++-4.8
+services:
+  - mongodb
 addons:
   firefox: "55.0"
-  chrome: "60.0"
   apt:
     sources:
       - mongodb-upstart
